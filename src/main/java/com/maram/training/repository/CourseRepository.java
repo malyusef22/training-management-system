@@ -1,0 +1,1 @@
+package com.maram.training.repository; import com.maram.training.entity.Course; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*; public interface CourseRepository extends JpaRepository<Course,Long>{boolean existsByCodeIgnoreCase(String x); List<Course> findByTitleContainingIgnoreCase(String x);}

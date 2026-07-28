@@ -1,0 +1,2 @@
+-- Sample business data and BCrypt users are created by DataInitializer.java.
+-- admin/Admin123! trainer/Trainer123! trainee/Trainee123!
