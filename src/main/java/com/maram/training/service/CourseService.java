@@ -1,1 +1,5 @@
-package com.maram.training.service; import com.maram.training.entity.Course; import java.util.*; public interface CourseService{List<Course> all(); List<Course> search(String q); Course one(Long id); Course create(Course c); Course replace(Long id,Course c); Course patch(Long id,Course c); void delete(Long id);}
+package com.maram.training.service; 
+import com.maram.training.entity.Course;
+import java.util.*;
+public interface CourseService{List<Course> all(); List<Course> search(String q); Course one(Long id); Course create(Course c); 
+Course replace(Long id,Course c); Course patch(Long id,Course c); void delete(Long id);}

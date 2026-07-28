@@ -1,2 +1,32 @@
-package com.maram.training.service.impl; import com.maram.training.dto.AssignmentRequest; import com.maram.training.entity.*; import com.maram.training.exception.*; import com.maram.training.repository.*; import com.maram.training.service.AssignmentService; import org.springframework.stereotype.Service; import org.springframework.transaction.annotation.Transactional; import java.util.*;
-@Service @Transactional public class AssignmentServiceImpl implements AssignmentService{private final AssignmentRepository r;private final CourseRepository cr;public AssignmentServiceImpl(AssignmentRepository r,CourseRepository cr){this.r=r;this.cr=cr;}public List<Assignment> all(){return r.findAll();}public List<Assignment> byCourse(Long id){return r.findByCourseId(id);}public Assignment one(Long id){return r.findById(id).orElseThrow(()->new ResourceNotFoundException("Assignment not found: "+id));}public Assignment create(AssignmentRequest q){Assignment a=new Assignment();apply(a,q);return r.save(a);}public Assignment replace(Long id,AssignmentRequest q){Assignment a=one(id);apply(a,q);return r.save(a);}public Assignment patch(Long id,AssignmentRequest q){Assignment a=one(id);if(q.title()!=null)a.setTitle(q.title());if(q.description()!=null)a.setDescription(q.description());if(q.dueDate()!=null)a.setDueDate(q.dueDate());if(q.maximumScore()!=null)a.setMaximumScore(q.maximumScore());if(q.courseId()!=null)a.setCourse(course(q.courseId()));return r.save(a);}public void delete(Long id){r.delete(one(id));}private void apply(Assignment a,AssignmentRequest q){a.setTitle(q.title());a.setDescription(q.description());a.setDueDate(q.dueDate());a.setMaximumScore(q.maximumScore());a.setCourse(course(q.courseId()));}private Course course(Long id){return cr.findById(id).orElseThrow(()->new ResourceNotFoundException("Course not found: "+id));}}
+package com.maram.training.service.impl;
+import com.maram.training.dto.AssignmentRequest;
+import com.maram.training.entity.*; 
+import com.maram.training.exception.*; 
+import com.maram.training.repository.*; 
+import com.maram.training.service.AssignmentService;
+import org.springframework.stereotype.Service; 
+import org.springframework.transaction.annotation.Transactional; 
+import java.util.*;
+@Service @Transactional 
+public class AssignmentServiceImpl implements AssignmentService{
+	private final AssignmentRepository r;
+	private final CourseRepository cr;
+	public AssignmentServiceImpl(AssignmentRepository r,CourseRepository cr){this.r=r;this.cr=cr;}
+	public List<Assignment> all(){
+		return r.findAll();}
+	public List<Assignment> byCourse(Long id){
+		return r.findByCourseId(id);}
+	public Assignment one(Long id){
+		return r.findById(id).orElseThrow(()->new ResourceNotFoundException("Assignment not found: "+id));}
+	public Assignment create(AssignmentRequest q){Assignment a=new Assignment();apply(a,q);return r.save(a);}
+	public Assignment replace(Long id,AssignmentRequest q){Assignment a=one(id);apply(a,q);return r.save(a);}
+	public Assignment patch(Long id,AssignmentRequest q){Assignment a=one(id);if(q.title()!=null)a.setTitle(q.title());
+	if(q.description()!=null)a.setDescription(q.description());
+	if(q.dueDate()!=null)a.setDueDate(q.dueDate());if(q.maximumScore()!=null)a.setMaximumScore(q.maximumScore());
+	if(q.courseId()!=null)a.setCourse(course(q.courseId()));
+	return r.save(a);}
+	public void delete(Long id){r.delete(one(id));}
+	private void apply(Assignment a,AssignmentRequest q){a.setTitle(q.title());a.setDescription(q.description());
+	a.setDueDate(q.dueDate());a.setMaximumScore(q.maximumScore());a.setCourse(course(q.courseId()));}
+	private Course course(Long id){
+		return cr.findById(id).orElseThrow(()->new ResourceNotFoundException("Course not found: "+id));}}

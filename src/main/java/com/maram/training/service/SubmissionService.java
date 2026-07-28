@@ -1,1 +1,8 @@
-package com.maram.training.service; import com.maram.training.dto.*; import com.maram.training.entity.AssignmentSubmission; import java.util.*; public interface SubmissionService{List<AssignmentSubmission> all();AssignmentSubmission one(Long id);List<AssignmentSubmission> byTrainee(Long id);AssignmentSubmission submit(SubmissionRequest r);AssignmentSubmission evaluate(Long id,EvaluationRequest r);void delete(Long id);}
+package com.maram.training.service; 
+import com.maram.training.dto.*; 
+import com.maram.training.entity.AssignmentSubmission; 
+import java.util.*; 
+public interface SubmissionService{List<AssignmentSubmission> all();AssignmentSubmission one(Long id);
+List<AssignmentSubmission> byTrainee(Long id);AssignmentSubmission submit(SubmissionRequest r);
+AssignmentSubmission evaluate(Long id,EvaluationRequest r);
+void delete(Long id);}

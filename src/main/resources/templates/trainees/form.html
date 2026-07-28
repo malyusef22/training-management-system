@@ -1,1 +1,22 @@
-<!doctype html><html xmlns:th="http://www.thymeleaf.org"><head><title>Add Trainee</title><link rel="stylesheet" th:href="@{/css/style.css}"></head><body><div class="container"><h1>Add Trainee</h1><form th:action="@{/trainees}" th:object="${trainee}" method="post"><label>Employee Number</label><input th:field="*{employeeNumber}" placeholder="TR-1003"><small th:errors="*{employeeNumber}"></small><label>Full Name</label><input th:field="*{fullName}"><small th:errors="*{fullName}"></small><label>Email</label><input type="email" th:field="*{email}"><small th:errors="*{email}"></small><label><input type="checkbox" th:field="*{active}"> Active</label><button>Save</button></form></div></body></html>
+<!doctype html><html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add Trainee</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+<h1>Add Trainee</h1>
+<form th:action="@{/trainees}" th:object="${trainee}" method="post">
+<label>Employee Number</label>
+<input th:field="*{employeeNumber}" placeholder="TR-1003">
+<small th:errors="*{employeeNumber}"></small>
+<label>Full Name</label>
+<input th:field="*{fullName}">
+<small th:errors="*{fullName}"></small>
+<label>Email</label>
+<input type="email" th:field="*{email}"><small th:errors="*{email}"></small><label><input type="checkbox" th:field="*{active}"> Active</label>
+<button>Save</button>
+</form>
+</div>
+</body>
+</html>

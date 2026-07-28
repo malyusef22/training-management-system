@@ -1,2 +1,38 @@
-package com.maram.training.controller; import com.maram.training.entity.Course; import com.maram.training.service.CourseService; import jakarta.validation.Valid; import org.springframework.http.*; import org.springframework.security.access.prepost.PreAuthorize; import org.springframework.web.bind.annotation.*; import java.util.*;
-@RestController @RequestMapping("/api/courses") public class CourseRestController{private final CourseService s;public CourseRestController(CourseService s){this.s=s;}@GetMapping @PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") public List<Course> all(){return s.all();}@GetMapping("/{id}") @PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") public Course one(@PathVariable Long id){return s.one(id);}@GetMapping("/search") @PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") public List<Course> search(@RequestParam String title){return s.search(title);}@PostMapping @ResponseStatus(HttpStatus.CREATED) @PreAuthorize("hasAnyRole('ADMIN','TRAINER')") public Course create(@Valid @RequestBody Course c){return s.create(c);}@PutMapping("/{id}") @PreAuthorize("hasAnyRole('ADMIN','TRAINER')") public Course replace(@PathVariable Long id,@Valid @RequestBody Course c){return s.replace(id,c);}@PatchMapping("/{id}") @PreAuthorize("hasAnyRole('ADMIN','TRAINER')") public Course patch(@PathVariable Long id,@RequestBody Course c){return s.patch(id,c);}@DeleteMapping("/{id}") @ResponseStatus(HttpStatus.NO_CONTENT) @PreAuthorize("hasRole('ADMIN')") public void delete(@PathVariable Long id){s.delete(id);}}
+package com.maram.training.controller; 
+import com.maram.training.entity.Course; 
+import com.maram.training.service.CourseService; 
+import jakarta.validation.Valid; 
+import org.springframework.http.*; 
+import org.springframework.security.access.prepost.PreAuthorize; 
+import org.springframework.web.bind.annotation.*; 
+import java.util.*;
+@RestController @RequestMapping("/api/courses")
+public class CourseRestController{
+	private final CourseService s;
+	public CourseRestController(CourseService s){this.s=s;}
+	@GetMapping @PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") 
+	public List<Course> all(){return s.all();}
+	@GetMapping("/{id}") 
+	@PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") 
+	public Course one(@PathVariable Long id){return s.one(id);}
+	@GetMapping("/search") @PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") 
+	public List<Course> search(@RequestParam String title){return s.search(title);}
+	@PostMapping @ResponseStatus(HttpStatus.CREATED) 
+	@PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
+	public Course create(@Valid @RequestBody Course c){
+		return s.create(c);}@PutMapping("/{id}")
+		@PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
+		public Course replace(@PathVariable Long id
+				,@Valid @RequestBody Course c){
+			return s.replace(id,c);}
+		@PatchMapping("/{id}") 
+		@PreAuthorize("hasAnyRole('ADMIN','TRAINER')")
+		public Course patch(
+				@PathVariable Long id,
+				@RequestBody Course c){
+			return s.patch(id,c);}
+		@DeleteMapping("/{id}") 
+		@ResponseStatus(HttpStatus.NO_CONTENT) 
+		@PreAuthorize("hasRole('ADMIN')") 
+		public void delete(
+				@PathVariable Long id){s.delete(id);}}

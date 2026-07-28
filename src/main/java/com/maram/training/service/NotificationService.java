@@ -1,1 +1,2 @@
-package com.maram.training.service; public interface NotificationService{void notify(String m);}
+package com.maram.training.service; 
+public interface NotificationService{void notify(String m);}
