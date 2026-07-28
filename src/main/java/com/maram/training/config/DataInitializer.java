@@ -15,8 +15,8 @@ public class DataInitializer{
 		user(j,pe,"trainer","Trainer123!","ROLE_TRAINER");
 		user(j,pe,"trainee","Trainee123!","ROLE_TRAINEE");
 		if(t.count()==0){Trainee t1=new Trainee();
-		t1.setEmployeeNumber("TR-1001");t1.setFullName("Maram Saleh");t1.setEmail("maram@example.com");t1.setActive(true);t.save(t1);Trainee t2=new Trainee();
-		t2.setEmployeeNumber("TR-1002");t2.setFullName("Sara Ahmed");t2.setEmail("sara@example.com");t2.setActive(true);t.save(t2);}
+		t1.setEmployeeNumber("TR-1001");t1.setFullName("Maram Saleh");t1.setEmail("maram@ejada.com");t1.setActive(true);t.save(t1);Trainee t2=new Trainee();
+		t2.setEmployeeNumber("TR-1002");t2.setFullName("Sara Ahmed");t2.setEmail("sara@ejada.com");t2.setActive(true);t.save(t2);}
 		if(c.count()==0){Course c1=new Course();c1.setCode("JAVA-101");c1.setTitle("Java and OOP");c1.setDescription("Java fundamentals");c1.setActive(true);c.save(c1);
 		Course c2=new Course();c2.setCode("SPRING-201");c2.setTitle("Spring Boot");c2.setDescription("REST and Security");c2.setActive(true);c.save(c2);
 		Assignment a1=new Assignment();a1.setTitle("Java Assignment");a1.setDescription("Student management");a1.setDueDate(LocalDate.now().plusDays(14));a1.setMaximumScore(100.0);a1.setCourse(c1);a.save(a1);
