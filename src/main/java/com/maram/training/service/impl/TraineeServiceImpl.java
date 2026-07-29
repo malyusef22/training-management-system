@@ -1,4 +1,5 @@
 package com.maram.training.service.impl;
+
 import com.maram.training.entity.Trainee; 
 import com.maram.training.exception.*;
 import com.maram.training.repository.TraineeRepository; 
@@ -7,7 +8,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service; 
 import org.springframework.transaction.annotation.Transactional; 
 import java.util.*;
-@Service @Transactional public class TraineeServiceImpl implements TraineeService{
+
+@Service
+@Transactional
+public class TraineeServiceImpl implements TraineeService{
 	private final TraineeRepository r;
 	public TraineeServiceImpl(TraineeRepository r){this.r=r;} 
 	public List<Trainee> all(String s,String d){return r.findAll(sort(s,d));} 

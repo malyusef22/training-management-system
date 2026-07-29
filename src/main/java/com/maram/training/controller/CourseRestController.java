@@ -1,4 +1,5 @@
-package com.maram.training.controller; 
+package com.maram.training.controller;
+
 import com.maram.training.entity.Course; 
 import com.maram.training.service.CourseService; 
 import jakarta.validation.Valid; 
@@ -6,21 +7,31 @@ import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize; 
 import org.springframework.web.bind.annotation.*; 
 import java.util.*;
-@RestController @RequestMapping("/api/courses")
+
+@RestController
+@RequestMapping("/api/courses")
 public class CourseRestController{
 	private final CourseService s;
 	public CourseRestController(CourseService s){this.s=s;}
-	@GetMapping @PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") 
-	public List<Course> all(){return s.all();}
+	@GetMapping
+	@PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") 
+	public List<Course> all(){
+		return s.all();}
 	@GetMapping("/{id}") 
 	@PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") 
-	public Course one(@PathVariable Long id){return s.one(id);}
-	@GetMapping("/search") @PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") 
-	public List<Course> search(@RequestParam String title){return s.search(title);}
-	@PostMapping @ResponseStatus(HttpStatus.CREATED) 
+	public Course one
+	(@PathVariable Long id){
+		return s.one(id);}
+	@GetMapping("/search")
+	@PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") 
+	public List<Course> search(@RequestParam String title){
+		return s.search(title);}
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED) 
 	@PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
 	public Course create(@Valid @RequestBody Course c){
-		return s.create(c);}@PutMapping("/{id}")
+		return s.create(c);}
+	@PutMapping("/{id}")
 		@PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
 		public Course replace(@PathVariable Long id
 				,@Valid @RequestBody Course c){

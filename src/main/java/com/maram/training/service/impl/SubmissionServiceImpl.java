@@ -1,4 +1,5 @@
-package com.maram.training.service.impl; 
+package com.maram.training.service.impl;
+
 import com.maram.training.dto.*; 
 import com.maram.training.entity.*; 
 import com.maram.training.exception.*; 
@@ -7,8 +8,11 @@ import com.maram.training.service.*;
 import org.springframework.beans.factory.annotation.Qualifier; 
 import org.springframework.stereotype.Service; 
 import org.springframework.transaction.annotation.Transactional; 
-import java.time.*; import java.util.*;
-@Service @Transactional
+import java.time.*; 
+import java.util.*;
+
+@Service 
+@Transactional
 public class SubmissionServiceImpl implements SubmissionService{
 	private final AssignmentSubmissionRepository r;
 	private final TraineeRepository tr;

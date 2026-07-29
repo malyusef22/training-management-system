@@ -1,4 +1,5 @@
 package com.maram.training.dto;
+
 public record TrainingSummary(
 		long totalTrainees,
 		long activeTrainees,

@@ -1,4 +1,5 @@
 package com.maram.training.controller;
+
 import com.maram.training.entity.Trainee; 
 import com.maram.training.service.TraineeService; 
 import com.maram.training.validation.TraineeFormValidator;
@@ -8,15 +9,19 @@ import org.springframework.ui.Model;
 import org.springframework.validation.*; 
 import org.springframework.web.bind.WebDataBinder; 
 import org.springframework.web.bind.annotation.*;
-@Controller @RequestMapping("/trainees") 
+
+@Controller
+@RequestMapping("/trainees") 
 public class TraineeMvcController{
 	private final TraineeService s;
 	private final TraineeFormValidator v;
 	public TraineeMvcController(TraineeService s,TraineeFormValidator v){this.s=s;this.v=v;}
 	@InitBinder("trainee") void bind(WebDataBinder b){b.addValidators(v);}
-	@GetMapping public String list(Model m){m.addAttribute("trainees",s.all("fullName","asc"));
+	@GetMapping 
+	public String list(Model m){m.addAttribute("trainees",s.all("fullName","asc"));
 	return "trainees/list";}
-	@GetMapping("/new") public String form(Model m){m.addAttribute("trainee",new Trainee());
+	@GetMapping("/new") 
+	public String form(Model m){m.addAttribute("trainee",new Trainee());
 	return "trainees/form";}
 	@PostMapping 
 	public String save(@Valid @ModelAttribute Trainee trainee,BindingResult r){if(r.hasErrors())

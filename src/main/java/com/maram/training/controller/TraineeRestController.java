@@ -1,4 +1,5 @@
-package com.maram.training.controller; 
+package com.maram.training.controller;
+
 import com.maram.training.entity.Trainee; 
 import com.maram.training.service.TraineeService; 
 import jakarta.validation.Valid; 
@@ -6,21 +7,27 @@ import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize; 
 import org.springframework.web.bind.annotation.*; 
 import java.util.*;
-@RestController @RequestMapping("/api/trainees") 
+
+@RestController
+@RequestMapping("/api/trainees") 
 public class TraineeRestController{
 	private final TraineeService s;
 	public TraineeRestController(TraineeService s){this.s=s;}
-	@GetMapping @PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
+	@GetMapping
+	@PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
 	public List<Trainee> all(@RequestParam(defaultValue="fullName")String sort,
 			@RequestParam(defaultValue="asc")String direction){return s.all(sort,direction);}
-	@GetMapping("/{id}") @PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
+	@GetMapping("/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
 	public Trainee one(@PathVariable Long id){return s.one(id);}
-	@GetMapping("/search") @PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
+	@GetMapping("/search")
+	@PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
 	public List<Trainee> active(@RequestParam boolean active,
 			@RequestParam(defaultValue="fullName")String sort,
 			@RequestParam(defaultValue="asc")String direction){
 		return s.active(active,sort,direction);}
-	@PostMapping @ResponseStatus(HttpStatus.CREATED)
+	@PostMapping 
+	@ResponseStatus(HttpStatus.CREATED)
 	@PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
 		public Trainee create(@Valid @RequestBody Trainee t){
 			return s.create(t);}

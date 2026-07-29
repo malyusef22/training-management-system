@@ -1,4 +1,5 @@
 package com.maram.training.exception; 
+
 public class BusinessRuleException extends RuntimeException{/**
 	 * 
 	 */

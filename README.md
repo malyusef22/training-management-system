@@ -3,7 +3,9 @@
 Complete individual Spring Boot project using Java 17, MySQL, JPA/Hibernate, REST APIs, Security, Thymeleaf, Swagger, Maven, Git and Podman.
 
 ## Entities and roles
-Business entities: Trainee, Course, Assignment, AssignmentSubmission. Security tables: users, authorities. Roles: ADMIN, TRAINER, TRAINEE.
+Business entities: Trainee, Course, Assignment, AssignmentSubmission. 
+Security tables: users, authorities.
+ Roles: ADMIN, TRAINER, TRAINEE.
 
 Demo users: `admin/Admin123!`, `trainer/Trainer123!`, `trainee/Trainee123!`.
 
@@ -18,7 +20,9 @@ Demo users: `admin/Admin123!`, `trainer/Trainer123!`, `trainee/Trainee123!`.
 `controller -> service interface -> implementation -> repository -> MySQL`. Constructor injection is used. NotificationService has two implementations; `@Primary` and `@Qualifier` are demonstrated. `@Configuration`, `@Bean`, `@Value`, custom validation, `@InitBinder`, and `@ControllerAdvice` are included.
 
 ## Run locally
-1. Start MySQL. 2. Confirm root password is `123456` or change `application.properties`. 3. Run:
+1. Start MySQL.
+ 2. Confirm root password is `123456` or change `application.properties`. 
+ 3. Run:
 ```bash
 mvn clean package
 mvn spring-boot:run

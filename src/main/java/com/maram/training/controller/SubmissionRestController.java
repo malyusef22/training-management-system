@@ -1,4 +1,5 @@
 package com.maram.training.controller; 
+
 import com.maram.training.dto.*; 
 import com.maram.training.entity.AssignmentSubmission; 
 import com.maram.training.service.SubmissionService; 
@@ -7,19 +8,33 @@ import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize; 
 import org.springframework.web.bind.annotation.*; 
 import java.util.*;
-@RestController @RequestMapping("/api/submissions") 
+
+@RestController
+@RequestMapping("/api/submissions") 
 public class SubmissionRestController{
 	private final SubmissionService s;
 	public SubmissionRestController(SubmissionService s){this.s=s;}
-	@GetMapping @PreAuthorize("hasAnyRole('ADMIN','TRAINER')")
-	public List<AssignmentSubmission> all(){return s.all();}
-	@GetMapping("/{id}") @PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')")
-	public AssignmentSubmission one(@PathVariable Long id){return s.one(id);}
-	@GetMapping("/trainee/{id}") @PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") 
-	public List<AssignmentSubmission> byTrainee(@PathVariable Long id){return s.byTrainee(id);}
-	@PostMapping @ResponseStatus(HttpStatus.CREATED) @PreAuthorize("hasAnyRole('ADMIN','TRAINEE')") 
-	public AssignmentSubmission submit(@Valid @RequestBody SubmissionRequest r){return s.submit(r);}
-	@PutMapping("/{id}/evaluate") @PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
+	@GetMapping
+	@PreAuthorize("hasAnyRole('ADMIN','TRAINER')")
+	public List<AssignmentSubmission> all(){
+		return s.all();}
+	@GetMapping("/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')")
+	public AssignmentSubmission one(@PathVariable Long id){
+		return s.one(id);}
+	@GetMapping("/trainee/{id}") 
+	@PreAuthorize("hasAnyRole('ADMIN','TRAINER','TRAINEE')") 
+	public List<AssignmentSubmission> byTrainee(
+			@PathVariable Long id){
+		return s.byTrainee(id);}
+	@PostMapping 
+	@ResponseStatus(HttpStatus.CREATED)
+	@PreAuthorize("hasAnyRole('ADMIN','TRAINEE')") 
+	public AssignmentSubmission submit(
+			@Valid @RequestBody SubmissionRequest r){
+		return s.submit(r);}
+	@PutMapping("/{id}/evaluate")
+	@PreAuthorize("hasAnyRole('ADMIN','TRAINER')") 
 	public AssignmentSubmission evaluate(@PathVariable Long id,@Valid @RequestBody EvaluationRequest r){
 		return s.evaluate(id,r);}@DeleteMapping("/{id}") @ResponseStatus(HttpStatus.NO_CONTENT) @PreAuthorize("hasRole('ADMIN')") 
 		public void delete(

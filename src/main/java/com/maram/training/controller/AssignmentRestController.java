@@ -1,4 +1,5 @@
 package com.maram.training.controller; 
+
 import com.maram.training.dto.AssignmentRequest; 
 import com.maram.training.entity.Assignment; 
 import com.maram.training.service.AssignmentService; 
@@ -7,7 +8,9 @@ import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize; 
 import org.springframework.web.bind.annotation.*; 
 import java.util.*;
-@RestController @RequestMapping("/api/assignments") 
+
+@RestController 
+@RequestMapping("/api/assignments") 
 public class AssignmentRestController{
 	private final AssignmentService s;
 	public AssignmentRestController(AssignmentService s){this.s=s;}

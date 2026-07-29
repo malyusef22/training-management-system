@@ -1,8 +1,10 @@
 package com.maram.training.service;
+
 import com.maram.training.dto.TrainingSummary; 
 import com.maram.training.repository.*; 
 import org.springframework.data.domain.Sort; 
 import org.springframework.stereotype.Service;
+
 @Service 
 public class SummaryService{
 	private final TraineeRepository t;

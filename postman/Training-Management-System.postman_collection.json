@@ -126,7 +126,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"employeeNumber\": \"TR-1001\",\n  \"fullName\": \"Maram Saleh Updated\",\n  \"email\": \"maram@example.com\",\n  \"active\": true\n}"
+          "raw": "{\n  \"employeeNumber\": \"TR-1001\",\n  \"fullName\": \"Maram Saleh Updated\",\n  \"email\": \"maram@ejada.com\",\n  \"active\": true\n}"
         }
       }
     },

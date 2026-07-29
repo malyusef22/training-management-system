@@ -1,4 +1,5 @@
 package com.maram.training.config; 
+
 import com.maram.training.entity.*; 
 import com.maram.training.repository.*; 
 import org.springframework.boot.CommandLineRunner; 
@@ -6,10 +7,17 @@ import org.springframework.context.annotation.*;
 import org.springframework.jdbc.core.JdbcTemplate; 
 import org.springframework.security.crypto.password.PasswordEncoder; 
 import java.time.*;
+
 @Configuration 
 public class DataInitializer{
-	@Bean CommandLineRunner init(JdbcTemplate j,PasswordEncoder pe,TraineeRepository t,CourseRepository c,AssignmentRepository a){
-		return x->{j.execute("CREATE TABLE IF NOT EXISTS users(username VARCHAR(50) PRIMARY KEY,password VARCHAR(100) NOT NULL,enabled BOOLEAN NOT NULL)");
+	@Bean 
+	CommandLineRunner init(JdbcTemplate j,
+			PasswordEncoder pe,
+			TraineeRepository t,
+			CourseRepository c,
+			AssignmentRepository a){
+		return
+				x->{j.execute("CREATE TABLE IF NOT EXISTS users(username VARCHAR(50) PRIMARY KEY,password VARCHAR(100) NOT NULL,enabled BOOLEAN NOT NULL)");
 		j.execute("CREATE TABLE IF NOT EXISTS authorities(username VARCHAR(50) NOT NULL,authority VARCHAR(50) NOT NULL,CONSTRAINT fk_auth_users FOREIGN KEY(username) REFERENCES users(username),CONSTRAINT uk_auth UNIQUE(username,authority))");
 		user(j,pe,"admin","Admin123!","ROLE_ADMIN");
 		user(j,pe,"trainer","Trainer123!","ROLE_TRAINER");
