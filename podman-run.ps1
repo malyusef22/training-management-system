@@ -1,7 +1,7 @@
-$ErrorActionPreference="Stop"
+
 mvn clean package
-podman network create training-net 2>$null
-podman rm -f training-mysql training-app 2>$null
+podman network create training-net 
+podman rm -f training-mysql training-app 
 podman run -d --name training-mysql --network training-net -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=training_management_db -p 3307:3306 mysql:8.4
 Start-Sleep -Seconds 25
 podman build -t training-management-app .

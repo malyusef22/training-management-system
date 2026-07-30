@@ -38,10 +38,10 @@ Application: `http://localhost:8085`
 ## APIs
 `/api/trainees`, `/api/courses`, `/api/assignments`, `/api/submissions`, `/api/summary/training`. Includes GET, POST, PUT, PATCH, DELETE, filtering, sorting, custom finders, AVG summary, 404 and 403.
 
-## Podman on Windows
+## Podman 
 ```cmd
-Set-ExecutionPolicy -Scope Process Bypass
-./podman-run.ps1
+podman compose up -d --build
+podman compose down
 ```
 The MySQL hostname inside the network is `training-mysql`, not localhost. Show `podman images`, `podman ps`, `podman logs training-app`, then test one GET, one write, and one 403.
 
